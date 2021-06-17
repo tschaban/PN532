@@ -4,8 +4,12 @@
 
 #include <SoftwareSerial.h>
 
-#include "PN532/PN532/PN532Interface.h"
+#include "PN532Interface.h"
 #include "Arduino.h"
+
+#ifdef DEBUG
+#include <Streaming.h>
+#endif
 
 #define PN532_SWHSU_DEBUG
 
@@ -13,6 +17,12 @@
 
 class PN532_SWHSU : public PN532Interface {
 public:
+
+    /* AFE */
+    PN532_SWHSU();
+    void setSerial(int8_t rxPin, int8_t txPin);
+    void setSerial(SoftwareSerial &serial);
+
     PN532_SWHSU(SoftwareSerial &serial);
     
     void begin();
@@ -21,6 +31,7 @@ public:
     int16_t readResponse(uint8_t buf[], uint8_t len, uint16_t timeout);
     
 private:
+    SoftwareSerial SWSerial;
     SoftwareSerial* _serial;
     uint8_t command;
     

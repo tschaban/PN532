@@ -127,7 +127,13 @@
 class PN532
 {
 public:
+    
     PN532(PN532Interface &interface);
+
+    /* AFE */
+    PN532();
+    void setInterface(PN532Interface &interface);
+
 
     void begin(void);
 
@@ -203,7 +209,6 @@ private:
     uint8_t _felicaPMm[8]; // FeliCa PMm (PAD)
 
     uint8_t pn532_packetbuffer[64];
-
     PN532Interface *_interface;
 };
 
