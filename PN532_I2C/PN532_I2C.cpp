@@ -27,6 +27,12 @@ void PN532_I2C::begin(uint8_t i2cAddress, TwoWire &wire) {
   _wire->begin();
 }
 
+void PN532_I2C::begin(uint8_t i2cAddress, TwoWire *wire) {
+  address = i2cAddress;
+  _wire = wire;
+  _wire->begin();
+}
+
 void PN532_I2C::wakeup() {
   delay(500); // wait for all ready to manipulate pn532
 }

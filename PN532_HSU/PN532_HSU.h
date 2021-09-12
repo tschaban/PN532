@@ -2,7 +2,8 @@
 #ifndef __PN532_HSU_H__
 #define __PN532_HSU_H__
 
-#include "PN532/PN532/PN532Interface.h"
+//#include "PN532/PN532/PN532Interface.h"
+#include "PN532Interface.h"
 #include "Arduino.h"
 
 #define PN532_HSU_DEBUG
@@ -12,6 +13,11 @@
 class PN532_HSU : public PN532Interface
 {
 public:
+    /* AFE */
+    PN532_HSU();
+    void setSerial(HardwareSerial &serial);
+    void setSerial(int8_t rxPin, int8_t txPin);
+    
     PN532_HSU(HardwareSerial &serial);
 
     void begin();
